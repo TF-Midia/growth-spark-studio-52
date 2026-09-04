@@ -1,14 +1,14 @@
-// SEO helpers for Lumen Labs
+// SEO helpers for TF Mídia
 // Replace this with the final public domain when the site is published.
 export const SITE_ORIGIN = "https://id-preview--dcbc5600-9c1e-4df6-bd50-4554017c36a9.lovable.app";
 
-export const COMPANY_NAME = "Lumen Labs";
+export const COMPANY_NAME = "TF Mídia";
 export const COMPANY_TAGLINE = "Gestão de Comunidade & Tráfego Pago";
 export const COMPANY_DESCRIPTION =
   "Escala sua presença digital com gestão de comunidades, community manager dedicado, tráfego pago, anúncios online e marketing digital para empresas e empreendedores.";
 
 export const WHATSAPP_NUMBER = "5511999999999";
-export const CONTACT_EMAIL = "ola@lumenlabs.com.br";
+export const CONTACT_EMAIL = "ola@tfmidia.com.br";
 
 export const KEYWORDS = {
   home: [
@@ -59,7 +59,7 @@ export function organizationJsonLd() {
     "@context": "https://schema.org",
     "@type": "Organization",
     name: COMPANY_NAME,
-    alternateName: "Lumen Labs Marketing Digital",
+    alternateName: "TF Mídia Marketing Digital",
     url: SITE_ORIGIN,
     logo: `${SITE_ORIGIN}/favicon.ico`,
     description: COMPANY_DESCRIPTION,

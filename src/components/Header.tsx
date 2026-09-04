@@ -15,7 +15,7 @@ export function Header() {
             <span className="size-8 rounded-2xl bg-brand grid place-items-center font-display font-semibold text-white text-sm shrink-0">
               L
             </span>
-            <span className="font-display font-semibold text-ink text-lg">Lumen Labs</span>
+            <span className="font-display font-semibold text-ink text-lg">TF Mídia</span>
           </Link>
 
           <div className="hidden md:flex items-center gap-8 text-sm font-medium text-ink/70">

@@ -6,10 +6,10 @@ export function Footer() {
           <span className="size-7 rounded-xl bg-brand grid place-items-center font-display font-semibold text-white text-xs shrink-0">
             L
           </span>
-          <span className="font-display font-semibold text-ink">Lumen Labs</span>
+          <span className="font-display font-semibold text-ink">TF Mídia</span>
         </div>
         <p className="text-sm text-ink/50">
-          © {new Date().getFullYear()} Lumen Labs · Gestão de comunidade & tráfego pago
+          © {new Date().getFullYear()} TF Mídia · Gestão de comunidade & tráfego pago
         </p>
       </div>
     </footer>

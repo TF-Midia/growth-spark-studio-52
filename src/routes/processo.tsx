@@ -4,7 +4,7 @@ import { buildUrl, COMPANY_NAME, KEYWORDS, serviceJsonLd } from "../lib/seo";
 
 const PAGE_TITLE = `Processo — Community Manager & Tráfego Pago | ${COMPANY_NAME}`;
 const PAGE_DESCRIPTION =
-  "Entenda como a Lumen Labs trabalha: diagnóstico, produção, escala e resultados. Um método claro de gestão de comunidades, anúncios online e marketing digital.";
+  "Entenda como a TF Mídia trabalha: diagnóstico, produção, escala e resultados. Um método claro de gestão de comunidades, anúncios online e marketing digital.";
 
 export const Route = createFileRoute("/processo")({
   head: () => ({
