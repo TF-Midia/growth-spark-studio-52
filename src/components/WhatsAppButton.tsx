@@ -7,7 +7,7 @@ interface WhatsAppButtonProps {
   variant?: "primary" | "secondary" | "ghost";
 }
 
-const WHATSAPP_NUMBER = "5511999999999";
+const WHATSAPP_NUMBER = "551153049093";
 const DEFAULT_MESSAGE = "Olá! Vi o site e quero saber mais sobre community management e tráfego pago.";
 
 export function WhatsAppButton({
