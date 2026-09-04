@@ -2,24 +2,43 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Mail, MapPin, Clock, MessageCircle } from "lucide-react";
 import { ContactForm } from "../components/ContactForm";
 import { WhatsAppButton } from "../components/WhatsAppButton";
+import {
+  buildUrl,
+  COMPANY_NAME,
+  CONTACT_EMAIL,
+  KEYWORDS,
+  serviceJsonLd,
+} from "../lib/seo";
+
+const PAGE_TITLE = `Contato — Community Manager & Tráfego Pago | ${COMPANY_NAME}`;
+const PAGE_DESCRIPTION =
+  "Entre em contato com a Lumen Labs. Preencha o formulário ou fale direto pelo WhatsApp para receber um diagnóstico gratuito de gestão de comunidades e anúncios online.";
 
 export const Route = createFileRoute("/contato")({
   head: () => ({
     meta: [
-      { title: "Contato — Lumen Labs" },
-      {
-        name: "description",
-        content:
-          "Entre em contato com a Lumen Labs. Preencha o formulário ou fale direto pelo WhatsApp para receber um diagnóstico gratuito.",
-      },
-      { property: "og:title", content: "Contato — Lumen Labs" },
-      {
-        property: "og:description",
-        content:
-          "Entre em contato com a Lumen Labs. Preencha o formulário ou fale direto pelo WhatsApp para receber um diagnóstico gratuito.",
-      },
+      { title: PAGE_TITLE },
+      { name: "description", content: PAGE_DESCRIPTION },
+      { name: "keywords", content: KEYWORDS.contact.join(", ") },
+      { property: "og:title", content: PAGE_TITLE },
+      { property: "og:description", content: PAGE_DESCRIPTION },
       { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary_large_image" },
+      { property: "og:url", content: buildUrl("/contato") },
+      { name: "twitter:title", content: PAGE_TITLE },
+      { name: "twitter:description", content: PAGE_DESCRIPTION },
+    ],
+    links: [{ rel: "canonical", href: buildUrl("/contato") }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify(
+          serviceJsonLd(
+            "Consultoria de Gestão de Comunidades e Tráfego Pago",
+            PAGE_DESCRIPTION,
+            "/contato",
+          ),
+        ),
+      },
     ],
   }),
   component: ContactPage,
@@ -39,7 +58,8 @@ function ContactPage() {
               Vamos desenhar seu próximo trimestre
             </h1>
             <p className="mt-4 text-base lg:text-lg text-ink/70">
-              Conte sobre seu negócio e devolvemos um diagnóstico inicial em até 1 dia útil.
+              Conte sobre seu negócio e devolvemos um diagnóstico inicial de community manager e
+              tráfego pago em até 1 dia útil.
             </p>
           </div>
         </div>
@@ -52,19 +72,19 @@ function ContactPage() {
               <ContactInfoCard
                 icon={<MessageCircle className="w-5 h-5 text-mint" />}
                 title="WhatsApp"
-                description="Resposta mais rápida para dúvidas e diagnósticos."
+                description="Resposta mais rápida para dúvidas e diagnósticos de gestão de comunidades e anúncios online."
                 action={<WhatsAppButton text="Chamar no WhatsApp" variant="ghost" className="px-0" />}
               />
               <ContactInfoCard
                 icon={<Mail className="w-5 h-5 text-brand" />}
                 title="E-mail"
-                description="Envie propostas, briefings ou dúvidas detalhadas."
+                description="Envie propostas, briefings ou dúvidas detalhadas sobre marketing digital."
                 action={
                   <a
-                    href="mailto:ola@lumenlabs.com.br"
+                    href={`mailto:${CONTACT_EMAIL}`}
                     className="text-sm font-medium text-ink hover:text-brand transition-colors"
                   >
-                    ola@lumenlabs.com.br
+                    {CONTACT_EMAIL}
                   </a>
                 }
               />
@@ -96,7 +116,8 @@ function ContactPage() {
             Prefere uma conversa direta?
           </h2>
           <p className="mt-4 text-white/80 max-w-[50ch] mx-auto">
-            Clique no botão abaixo e fale com um especialista no WhatsApp agora mesmo.
+            Clique no botão abaixo e fale com um especialista em gestão de comunidades e tráfego
+            pago no WhatsApp agora mesmo.
           </p>
           <div className="mt-8 flex justify-center">
             <WhatsAppButton text="Falar com especialista" />

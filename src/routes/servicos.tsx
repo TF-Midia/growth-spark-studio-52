@@ -1,24 +1,37 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Users, BarChart3, FileText, Target, Sparkles, MessageSquare } from "lucide-react";
 import { WhatsAppButton } from "../components/WhatsAppButton";
+import { buildUrl, COMPANY_NAME, KEYWORDS, serviceJsonLd } from "../lib/seo";
+
+const PAGE_TITLE = `Serviços — Gestão de Comunidades, Community Manager & Tráfego Pago | ${COMPANY_NAME}`;
+const PAGE_DESCRIPTION =
+  "Conheça os serviços da Lumen Labs: gestão de comunidades, community manager, tráfego pago, anúncios online, conteúdo e criativos para escalar sua presença digital.";
 
 export const Route = createFileRoute("/servicos")({
   head: () => ({
     meta: [
-      { title: "Serviços — Lumen Labs" },
-      {
-        name: "description",
-        content:
-          "Conheça os serviços da Lumen Labs: gestão de comunidade, tráfego pago e conteúdo/criativos para escalar sua presença digital.",
-      },
-      { property: "og:title", content: "Serviços — Lumen Labs" },
-      {
-        property: "og:description",
-        content:
-          "Conheça os serviços da Lumen Labs: gestão de comunidade, tráfego pago e conteúdo/criativos para escalar sua presença digital.",
-      },
+      { title: PAGE_TITLE },
+      { name: "description", content: PAGE_DESCRIPTION },
+      { name: "keywords", content: KEYWORDS.services.join(", ") },
+      { property: "og:title", content: PAGE_TITLE },
+      { property: "og:description", content: PAGE_DESCRIPTION },
       { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary_large_image" },
+      { property: "og:url", content: buildUrl("/servicos") },
+      { name: "twitter:title", content: PAGE_TITLE },
+      { name: "twitter:description", content: PAGE_DESCRIPTION },
+    ],
+    links: [{ rel: "canonical", href: buildUrl("/servicos") }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify(
+          serviceJsonLd(
+            "Gestão de Comunidades e Tráfego Pago",
+            PAGE_DESCRIPTION,
+            "/servicos",
+          ),
+        ),
+      },
     ],
   }),
   component: ServicesPage,
@@ -32,13 +45,13 @@ function ServicesPage() {
           <div className="max-w-[50ch]">
             <span className="inline-flex items-center gap-2 rounded-full bg-accent/15 text-ink text-sm font-medium px-4 py-1.5">
               <span className="size-2 rounded-full bg-accent shrink-0" />
-              Nossos serviços
+              Nossos serviços de marketing digital
             </span>
             <h1 className="mt-6 font-display font-semibold text-ink text-4xl lg:text-5xl leading-tight">
               Três frentes que crescem juntas
             </h1>
             <p className="mt-4 text-base lg:text-lg text-ink/70">
-              Cada serviço é pensado para se conectar aos outros. Community gera confiança, tráfego
+              Cada serviço se conecta aos outros: gestão de comunidades gera confiança, tráfego pago
               gera escala e conteúdo converte a atenção em resultado.
             </p>
           </div>
@@ -51,8 +64,8 @@ function ServicesPage() {
             <ServiceDetailCard
               icon={<Users className="w-6 h-6 text-brand" />}
               iconBg="bg-brand/12"
-              title="Gestão de comunidade"
-              description="Planejamento editorial, produção de posts, stories, respostas a comentários e DM. Tudo para que sua marca esteja presente e próxima do público."
+              title="Gestão de comunidades"
+              description="Planejamento editorial, produção de posts, stories, respostas a comentários e DM. Tudo para que sua marca esteja presente e próxima do público nas redes sociais."
               items={[
                 "Calendário editorial mensal",
                 "Posts e stories alinhados à marca",
@@ -64,7 +77,7 @@ function ServicesPage() {
               icon={<BarChart3 className="w-6 h-6 text-mint" />}
               iconBg="bg-mint/15"
               title="Tráfego pago"
-              description="Campanhas no Meta Ads, Google Ads e TikTok Ads com otimização contínua. Foco em CPL, ROAS e leads que realmente compram."
+              description="Campanhas de anúncios online no Meta Ads, Google Ads e TikTok Ads com otimização contínua. Foco em CPL, ROAS e leads que realmente compram."
               items={[
                 "Estrutura de campanhas e públicos",
                 "Criativos e testes A/B",
@@ -76,7 +89,7 @@ function ServicesPage() {
               icon={<FileText className="w-6 h-6 text-ink/60" />}
               iconBg="bg-butter/25"
               title="Conteúdo & criativos"
-              description="Criação de peças para anúncios e redes sociais, com tom de voz consistente e direção criativa que comunica valor de verdade."
+              description="Criação de peças para anúncios online e redes sociais, com tom de voz consistente e direção criativa que comunica valor de verdade."
               items={[
                 "Copy para anúncios e posts",
                 "Direção de arte e identidade",
@@ -88,7 +101,7 @@ function ServicesPage() {
               icon={<Target className="w-6 h-6 text-brand" />}
               iconBg="bg-brand/12"
               title="Estratégia digital"
-              description="Diagnóstico de canais, posicionamento, definição de persona e planejamento de médio prazo para crescimento sustentável."
+              description="Diagnóstico de canais, posicionamento, definição de persona e planejamento de médio prazo para crescimento sustentável no marketing digital."
               items={[
                 "Mapeamento de canais e concorrência",
                 "Definição de persona",
@@ -100,7 +113,7 @@ function ServicesPage() {
               icon={<Sparkles className="w-6 h-6 text-mint" />}
               iconBg="bg-mint/15"
               title="Produção de conteúdo"
-              description="Criação de reels, carrosséis, posts estáticos e materiais visuais que traduzem a essência da marca em alta frequência."
+              description="Criação de reels, carrosséis, posts estáticos e materiais visuais que traduzem a essência da marca em alta frequência nas redes sociais."
               items={[
                 "Design para redes sociais",
                 "Edição de reels e shorts",
@@ -130,7 +143,8 @@ function ServicesPage() {
             Quer saber qual serviço faz sentido para você?
           </h2>
           <p className="mt-4 text-white/80 max-w-[50ch] mx-auto">
-            Fale com a gente no WhatsApp e receba uma recomendação sem compromisso.
+            Fale com a gente no WhatsApp e receba uma recomendação de gestão de comunidades e
+            tráfego pago sem compromisso.
           </p>
           <div className="mt-8 flex justify-center">
             <WhatsAppButton text="Falar com especialista" />

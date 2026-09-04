@@ -1,31 +1,46 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { MessageCircle, Users, BarChart3, FileText } from "lucide-react";
+import { Users, BarChart3, FileText } from "lucide-react";
 import { WhatsAppButton } from "../components/WhatsAppButton";
 import { ContactForm } from "../components/ContactForm";
 import heroShapes from "../assets/hero-shapes.jpg";
 import testimonial1 from "../assets/testimonial-1.jpg";
 import testimonial2 from "../assets/testimonial-2.jpg";
+import {
+  buildUrl,
+  COMPANY_NAME,
+  KEYWORDS,
+  serviceJsonLd,
+} from "../lib/seo";
+
+const PAGE_TITLE = `${COMPANY_NAME} — Gestão de Comunidade, Community Manager & Tráfego Pago`;
+const PAGE_DESCRIPTION =
+  "Escala sua presença digital com gestão de comunidades, community manager dedicado, tráfego pago e anúncios online. Estratégia, conteúdo e resultados para empresas e empreendedores.";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Lumen Labs — Gestão de Comunidade & Tráfego Pago" },
-      {
-        name: "description",
-        content:
-          "Escala sua presença digital com gestão de comunidade e tráfego pago. Estratégia, conteúdo e anúncios alinhados para gerar leads qualificados.",
-      },
-      {
-        property: "og:title",
-        content: "Lumen Labs — Gestão de Comunidade & Tráfego Pago",
-      },
-      {
-        property: "og:description",
-        content:
-          "Escala sua presença digital com gestão de comunidade e tráfego pago. Estratégia, conteúdo e anúncios alinhados para gerar leads qualificados.",
-      },
+      { title: PAGE_TITLE },
+      { name: "description", content: PAGE_DESCRIPTION },
+      { name: "keywords", content: KEYWORDS.home.join(", ") },
+      { property: "og:title", content: PAGE_TITLE },
+      { property: "og:description", content: PAGE_DESCRIPTION },
       { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary_large_image" },
+      { property: "og:url", content: buildUrl("/") },
+      { name: "twitter:title", content: PAGE_TITLE },
+      { name: "twitter:description", content: PAGE_DESCRIPTION },
+    ],
+    links: [{ rel: "canonical", href: buildUrl("/") }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify(
+          serviceJsonLd(
+            "Gestão de Comunidade e Tráfego Pago",
+            PAGE_DESCRIPTION,
+            "/",
+          ),
+        ),
+      },
     ],
   }),
   component: HomePage,
@@ -41,15 +56,15 @@ function HomePage() {
             <div className="lg:col-span-7">
               <span className="inline-flex items-center gap-2 rounded-full bg-accent/15 text-ink text-sm font-medium px-4 py-1.5">
                 <span className="size-2 rounded-full bg-accent shrink-0" />
-                Community management + tráfego pago
+                Community manager + tráfego pago
               </span>
               <h1 className="mt-6 font-display font-semibold text-ink text-4xl lg:text-6xl leading-tight max-w-[20ch]">
                 Sua presença digital trabalhando a favor do seu faturamento.
               </h1>
               <p className="mt-5 text-base lg:text-lg text-ink/70 max-w-[52ch]">
-                Alinhamos estratégia, conteúdo, anúncios e resultados em uma operação contínua. Sem
-                promessa mágica, só método, constância e métricas que fazem sentido para o seu
-                negócio.
+                Alinhamos estratégia de marketing digital, gestão de comunidades, anúncios online e
+                resultados em uma operação contínua. Sem promessa mágica: só método, constância e
+                métricas que fazem sentido para o seu negócio.
               </p>
               <div className="mt-8 flex flex-col sm:flex-row gap-3">
                 <WhatsAppButton text="Chamar no WhatsApp" />
@@ -77,28 +92,28 @@ function HomePage() {
               O que fazemos por você
             </h2>
             <p className="mt-4 text-base text-ink/70">
-              Do atendimento ao resultado, cuidamos da presença e do crescimento do seu negócio — em
-              três frentes complementares.
+              Do atendimento ao resultado, cuidamos da presença e do crescimento do seu negócio —
+              em três frentes complementares de marketing digital.
             </p>
           </div>
           <div className="mt-10 grid md:grid-cols-3 gap-5">
             <ServiceCard
               icon={<Users className="w-5 h-5 text-brand" />}
               iconBg="bg-brand/12"
-              title="Community management"
-              description="Gestão diária de redes: conteúdo, bastidores e atendimento que mantêm sua marca próxima e humanizada, todos os dias."
+              title="Gestão de comunidades"
+              description="Community manager dedicado: conteúdo, bastidores e atendimento que mantêm sua marca próxima e humanizada nas redes sociais, todos os dias."
             />
             <ServiceCard
               icon={<BarChart3 className="w-5 h-5 text-mint" />}
               iconBg="bg-mint/15"
               title="Tráfego pago"
-              description="Campanhas no Meta e Google com segmentação, criativos e otimização semanal para gerar leads qualificados a custo previsível."
+              description="Campanhas de anúncios online no Meta Ads e Google Ads com segmentação, criativos e otimização semanal para gerar leads qualificados a custo previsível."
             />
             <ServiceCard
               icon={<FileText className="w-5 h-5 text-ink/60" />}
               iconBg="bg-butter/25"
               title="Conteúdo & criativos"
-              description="Peças de anúncio e posts pensados para converter, alinhados ao tom e à identidade visual da sua marca."
+              description="Peças de anúncio e posts para redes sociais pensados para converter, alinhados ao tom e à identidade visual da sua marca."
             />
           </div>
         </div>
@@ -117,10 +132,30 @@ function HomePage() {
             </p>
           </div>
           <div className="mt-10 grid md:grid-cols-4 gap-5">
-            <StepCard number="01" numberColor="text-brand" title="Diagnóstico" description="Mapeamos canais, audiência e metas para definir a estratégia certa." />
-            <StepCard number="02" numberColor="text-mint" title="Produção" description="Criamos conteúdo e criativos com calendário editorial e identidade." />
-            <StepCard number="03" numberColor="text-accent" title="Escala" description="Ligamos tráfego e ajustamos campanhas com base em dados reais." />
-            <StepCard number="04" numberColor="text-ink/70" title="Resultados" description="Relatórios claros e otimização contínua para crescer com consistência." />
+            <StepCard
+              number="01"
+              numberColor="text-brand"
+              title="Diagnóstico"
+              description="Mapeamos canais, audiência e metas para definir a estratégia certa de community manager e tráfego pago."
+            />
+            <StepCard
+              number="02"
+              numberColor="text-mint"
+              title="Produção"
+              description="Criamos conteúdo e criativos com calendário editorial e identidade para redes sociais."
+            />
+            <StepCard
+              number="03"
+              numberColor="text-accent"
+              title="Escala"
+              description="Ligamos anúncios online e ajustamos campanhas com base em dados reais de performance."
+            />
+            <StepCard
+              number="04"
+              numberColor="text-ink/70"
+              title="Resultados"
+              description="Relatórios claros e otimização contínua para crescer com consistência no marketing digital."
+            />
           </div>
         </div>
       </section>
@@ -130,13 +165,22 @@ function HomePage() {
         <div className="container-site section-padding">
           <div className="max-w-[40ch]">
             <h2 className="font-display font-semibold text-white text-3xl lg:text-4xl leading-tight">
-              Quebrando o gelo com números
+              Resultados de gestão de comunidades e tráfego pago
             </h2>
           </div>
           <div className="mt-10 grid sm:grid-cols-3 gap-5">
-            <MetricCard value="3,4×" description="Mais leads qualificados em média nos primeiros 90 dias." />
-            <MetricCard value="-28%" description="Redução no custo por lead com otimização semanal de campanhas." />
-            <MetricCard value="42" description="Marcas acompanhadas de perto pelo nosso time desde o início." />
+            <MetricCard
+              value="3,4×"
+              description="Mais leads qualificados em média nos primeiros 90 dias de gestão de comunidades e anúncios online."
+            />
+            <MetricCard
+              value="-28%"
+              description="Redução no custo por lead com otimização semanal de campanhas de tráfego pago."
+            />
+            <MetricCard
+              value="42"
+              description="Marcas acompanhadas de perto pelo nosso time de community manager e mídia."
+            />
           </div>
           <div className="mt-6 grid md:grid-cols-2 gap-5">
             <TestimonialCard
@@ -144,14 +188,14 @@ function HomePage() {
               name="Marina Costa"
               role="CEO, Flor de Sal"
               image={testimonial1}
-              imageAlt="Marina Costa, CEO da Flor de Sal"
+              imageAlt="Marina Costa, CEO da Flor de Sal, cliente de gestão de comunidades"
             />
             <TestimonialCard
               quote="Passamos de um fluxo instável de clientes para previsibilidade. O tráfego pago finalmente virou parte do planejamento, não uma aposta."
               name="Rafael Nunes"
               role="Fundador, Loja Vetor"
               image={testimonial2}
-              imageAlt="Rafael Nunes, fundador da Loja Vetor"
+              imageAlt="Rafael Nunes, fundador da Loja Vetor, cliente de anúncios online"
             />
           </div>
         </div>
@@ -166,8 +210,8 @@ function HomePage() {
                 Vamos conversar sobre o seu próximo passo
               </h2>
               <p className="mt-4 text-base text-ink/70">
-                Conte um pouco do seu negócio e retornamos com um diagnóstico inicial, sem
-                compromisso.
+                Conte um pouco do seu negócio e retornamos com um diagnóstico inicial de community
+                manager e tráfego pago, sem compromisso.
               </p>
               <WhatsAppButton
                 text="Prefere WhatsApp? Chame (11) 99999-9999"

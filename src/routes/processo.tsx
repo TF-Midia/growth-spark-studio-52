@@ -1,23 +1,36 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { WhatsAppButton } from "../components/WhatsAppButton";
+import { buildUrl, COMPANY_NAME, KEYWORDS, serviceJsonLd } from "../lib/seo";
+
+const PAGE_TITLE = `Processo — Community Manager & Tráfego Pago | ${COMPANY_NAME}`;
+const PAGE_DESCRIPTION =
+  "Entenda como a Lumen Labs trabalha: diagnóstico, produção, escala e resultados. Um método claro de gestão de comunidades, anúncios online e marketing digital.";
 
 export const Route = createFileRoute("/processo")({
   head: () => ({
     meta: [
-      { title: "Processo — Lumen Labs" },
-      {
-        name: "description",
-        content:
-          "Entenda como a Lumen Labs trabalha: diagnóstico, produção, escala e resultados. Um método claro para crescer com consistência.",
-      },
-      { property: "og:title", content: "Processo — Lumen Labs" },
-      {
-        property: "og:description",
-        content:
-          "Entenda como a Lumen Labs trabalha: diagnóstico, produção, escala e resultados. Um método claro para crescer com consistência.",
-      },
+      { title: PAGE_TITLE },
+      { name: "description", content: PAGE_DESCRIPTION },
+      { name: "keywords", content: KEYWORDS.process.join(", ") },
+      { property: "og:title", content: PAGE_TITLE },
+      { property: "og:description", content: PAGE_DESCRIPTION },
       { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary_large_image" },
+      { property: "og:url", content: buildUrl("/processo") },
+      { name: "twitter:title", content: PAGE_TITLE },
+      { name: "twitter:description", content: PAGE_DESCRIPTION },
+    ],
+    links: [{ rel: "canonical", href: buildUrl("/processo") }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify(
+          serviceJsonLd(
+            "Processo de Gestão de Comunidades e Tráfego Pago",
+            PAGE_DESCRIPTION,
+            "/processo",
+          ),
+        ),
+      },
     ],
   }),
   component: ProcessPage,
@@ -37,8 +50,8 @@ function ProcessPage() {
               Método, constância e transparência
             </h1>
             <p className="mt-4 text-base lg:text-lg text-ink/70">
-              Nosso processo foi desenhado para eliminar incerteza. Você sempre sabe o que está
-              sendo feito, por quê e qual resultado esperar.
+              Nosso processo de community manager e tráfego pago foi desenhado para eliminar
+              incerteza. Você sempre sabe o que está sendo feito, por quê e qual resultado esperar.
             </p>
           </div>
         </div>
@@ -51,7 +64,7 @@ function ProcessPage() {
               number="01"
               numberColor="text-brand"
               title="Diagnóstico"
-              description="Começamos entendendo onde você está. Analisamos seus canais, concorrência, público, funil de vendas e metas. Esse mapeamento define todo o resto."
+              description="Começamos entendendo onde você está. Analisamos seus canais de redes sociais, concorrência, público, funil de vendas e metas. Esse mapeamento define toda a estratégia de gestão de comunidades e anúncios online."
               details={[
                 "Auditoria de redes sociais e anúncios atuais",
                 "Entrevista de briefing e alinhamento de metas",
@@ -63,7 +76,7 @@ function ProcessPage() {
               number="02"
               numberColor="text-mint"
               title="Estratégia e produção"
-              description="Criamos o plano editorial, os criativos e a estrutura de campanhas. Tudo alinhado ao tom da marca e aos objetivos de curto prazo."
+              description="Criamos o plano editorial, os criativos e a estrutura de campanhas de tráfego pago. Tudo alinhado ao tom da marca e aos objetivos de curto prazo."
               details={[
                 "Calendário editorial e cronograma de entregas",
                 "Produção de conteúdo e peças de anúncio",
@@ -75,7 +88,7 @@ function ProcessPage() {
               number="03"
               numberColor="text-accent"
               title="Execução e escala"
-              description="Colocamos tudo no ar e começamos a rodar. Testamos criativos, ajustamos públicos e otimizamos a verba para o que performa melhor."
+              description="Colocamos tudo no ar e começamos a rodar. Testamos criativos, ajustamos públicos e otimizamos a verba para o que performa melhor nas campanhas de anúncios online."
               details={[
                 "Publicação e ativação de campanhas",
                 "Testes de criativo e segmentação",
@@ -87,7 +100,7 @@ function ProcessPage() {
               number="04"
               numberColor="text-ink/70"
               title="Resultados e otimização"
-              description="Relatórios claros e decisões baseadas em dados. O que funciona, escala. O que não funciona, é ajustado ou descartado sem perder tempo."
+              description="Relatórios claros e decisões baseadas em dados. O que funciona, escala. O que não funciona, é ajustado ou descartado sem perder tempo no marketing digital."
               details={[
                 "Relatório semanal de métricas",
                 "Análise de CPL, ROAS e conversão",
@@ -113,10 +126,22 @@ function ProcessPage() {
                 </p>
               </div>
               <div className="grid sm:grid-cols-2 gap-4">
-                <DifferentialCard title="Time sênior dedicado" description="O mesmo especialista acompanha do início ao fim." />
-                <DifferentialCard title="Relatórios que você entende" description="Métricas traduzidas em decisões, não em planilhas complexas." />
-                <DifferentialCard title="Comunidade + performance" description="Tráfego gera leads; relacionamento converte e retém." />
-                <DifferentialCard title="Metas realistas" description="Compromisso com o que seu mercado e verba sustentam." />
+                <DifferentialCard
+                  title="Time sênior dedicado"
+                  description="O mesmo especialista acompanha do início ao fim."
+                />
+                <DifferentialCard
+                  title="Relatórios que você entende"
+                  description="Métricas traduzidas em decisões, não em planilhas complexas."
+                />
+                <DifferentialCard
+                  title="Comunidade + performance"
+                  description="Tráfego gera leads; relacionamento converte e retém."
+                />
+                <DifferentialCard
+                  title="Metas realistas"
+                  description="Compromisso com o que seu mercado e verba sustentam."
+                />
               </div>
             </div>
           </div>
