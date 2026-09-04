@@ -5,7 +5,7 @@ import { buildUrl, COMPANY_NAME, KEYWORDS, serviceJsonLd } from "../lib/seo";
 
 const PAGE_TITLE = `Serviços — Gestão de Comunidades, Community Manager & Tráfego Pago | ${COMPANY_NAME}`;
 const PAGE_DESCRIPTION =
-  "Conheça os serviços da Lumen Labs: gestão de comunidades, community manager, tráfego pago, anúncios online, conteúdo e criativos para escalar sua presença digital.";
+  "Conheça os serviços da TF Mídia: gestão de comunidades, community manager, tráfego pago, anúncios online, conteúdo e criativos para escalar sua presença digital.";
 
 export const Route = createFileRoute("/servicos")({
   head: () => ({

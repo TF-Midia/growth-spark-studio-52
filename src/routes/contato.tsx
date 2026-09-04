@@ -12,7 +12,7 @@ import {
 
 const PAGE_TITLE = `Contato — Community Manager & Tráfego Pago | ${COMPANY_NAME}`;
 const PAGE_DESCRIPTION =
-  "Entre em contato com a Lumen Labs. Preencha o formulário ou fale direto pelo WhatsApp para receber um diagnóstico gratuito de gestão de comunidades e anúncios online.";
+  "Entre em contato com a TF Mídia. Preencha o formulário ou fale direto pelo WhatsApp para receber um diagnóstico gratuito de gestão de comunidades e anúncios online.";
 
 export const Route = createFileRoute("/contato")({
   head: () => ({
