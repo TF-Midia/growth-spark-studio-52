@@ -26,6 +26,7 @@
   --radius-2xl: calc(var(--radius) + 8px);
   --radius-3xl: calc(var(--radius) + 12px);
   --radius-4xl: calc(var(--radius) + 16px);
+
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -59,6 +60,17 @@
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
+
+  /* Brand tokens — Playful pastel grid */
+  --color-brand: var(--brand);
+  --color-brand-foreground: var(--brand-foreground);
+  --color-mint: var(--mint);
+  --color-butter: var(--butter);
+  --color-cream: var(--cream);
+  --color-ink: var(--ink);
+
+  --font-display: var(--font-display);
+  --font-body: var(--font-body);
 }
 
 :root {
@@ -95,6 +107,18 @@
   --sidebar-accent-foreground: oklch(0.208 0.042 265.755);
   --sidebar-border: oklch(0.929 0.013 255.508);
   --sidebar-ring: oklch(0.704 0.04 256.788);
+
+  /* Brand palette */
+  --brand: #7c6df2;
+  --brand-foreground: #ffffff;
+  --accent-pink: #ff8fa3;
+  --mint: #4ecdc4;
+  --butter: #ffd166;
+  --ink: #2b2735;
+  --cream: #fbf7ff;
+
+  --font-display: "Bricolage Grotesque", ui-sans-serif, system-ui, sans-serif;
+  --font-body: "DM Sans", ui-sans-serif, system-ui, sans-serif;
 }
 
 .dark {
@@ -140,5 +164,29 @@
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
+    font-family: var(--font-body);
   }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+  }
+}
+
+@utility section-padding {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+
+  @media (min-width: 1024px) {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+  }
+}
+
+@utility container-site {
+  width: 100%;
+  max-width: 72rem;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
 }
