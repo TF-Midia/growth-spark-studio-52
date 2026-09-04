@@ -34,7 +34,7 @@ export function ContactForm() {
     if (!validate()) return;
 
     const message = `Olá! Meu nome é ${formData.nome}.\nE-mail: ${formData.email}\n\n${formData.mensagem}`;
-    const whatsappHref = `https://wa.me/5511999999999?text=${encodeURIComponent(message)}`;
+    const whatsappHref = `https://wa.me/551153049093?text=${encodeURIComponent(message)}`;
 
     setSubmitted(true);
     window.open(whatsappHref, "_blank");
