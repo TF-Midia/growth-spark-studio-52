@@ -12,6 +12,12 @@ import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { Header } from "../components/Header";
 import { Footer } from "../components/Footer";
+import {
+  COMPANY_DESCRIPTION,
+  COMPANY_NAME,
+  organizationJsonLd,
+  webSiteJsonLd,
+} from "../lib/seo";
 
 function NotFoundComponent() {
   return (
@@ -78,23 +84,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lumen Labs — Gestão de Comunidade & Tráfego Pago" },
-      {
-        name: "description",
-        content:
-          "Escala sua presença digital com gestão de comunidade e tráfego pago. Estratégia, conteúdo e anúncios alinhados para gerar leads qualificados.",
-      },
-      { name: "author", content: "Lumen Labs" },
-      {
-        property: "og:title",
-        content: "Lumen Labs — Gestão de Comunidade & Tráfego Pago",
-      },
-      {
-        property: "og:description",
-        content:
-          "Escala sua presença digital com gestão de comunidade e tráfego pago. Estratégia, conteúdo e anúncios alinhados para gerar leads qualificados.",
-      },
+      { name: "author", content: COMPANY_NAME },
+      { property: "og:site_name", content: COMPANY_NAME },
       { property: "og:type", content: "website" },
+      { property: "og:locale", content: "pt_BR" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:site", content: "@lumenlabs" },
     ],
@@ -116,6 +109,16 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       {
         rel: "stylesheet",
         href: "https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=DM+Sans:opsz,wght@9..40,400..600&display=swap",
+      },
+    ],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify(organizationJsonLd()),
+      },
+      {
+        type: "application/ld+json",
+        children: JSON.stringify(webSiteJsonLd()),
       },
     ],
   }),
