@@ -13,7 +13,7 @@ export function Header() {
         <nav className="flex items-center justify-between py-5">
           <Link to="/" className="flex items-center gap-2">
             <span className="size-8 rounded-2xl bg-brand grid place-items-center font-display font-semibold text-white text-sm shrink-0">
-              L
+              T
             </span>
             <span className="font-display font-semibold text-ink text-lg">TF Mídia</span>
           </Link>

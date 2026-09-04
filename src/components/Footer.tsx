@@ -4,7 +4,7 @@ export function Footer() {
       <div className="container-site py-8 flex flex-col sm:flex-row items-center justify-between gap-4">
         <div className="flex items-center gap-2">
           <span className="size-7 rounded-xl bg-brand grid place-items-center font-display font-semibold text-white text-xs shrink-0">
-            L
+            T
           </span>
           <span className="font-display font-semibold text-ink">TF Mídia</span>
         </div>
