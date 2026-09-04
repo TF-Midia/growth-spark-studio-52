@@ -8,6 +8,7 @@
 - [x] Criar landing page principal (/)
 - [x] Criar páginas /servicos, /processo e /contato
 - [x] Formulário de contato redirecionando para WhatsApp (sem banco de dados)
+- [ ] Melhorias de SEO: títulos, descriptions, Open Graph, canonical, sitemap, robots e dados estruturados
 
 ## Próximos passos (sugestões)
 - [ ] Personalizar número do WhatsApp e e-mail de contato
